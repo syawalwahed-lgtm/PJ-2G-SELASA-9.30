@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#5b4bdb">
+<title>Pengembaraan Ilmu PJ Tahun 2 — Mari Melompat</title>
+<style>
+:root{--ink:#20304a;--purple:#5b4bdb;--pink:#ff6f91;--yellow:#ffd166;--mint:#6ee7b7;--sky:#8bd3ff;--paper:#fffdf7;--line:#e7e8f2}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:linear-gradient(135deg,#f1edff,#e7f8ff 55%,#fff4dc);min-height:100vh}
+header{padding:16px max(16px,calc((100% - 1080px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-weight:900;color:var(--purple);font-size:1.05rem}.sound{border:0;border-radius:999px;padding:10px 14px;background:white;font-weight:800;cursor:pointer}
+main{max-width:1080px;margin:auto;padding:12px 16px 40px}.hero{background:linear-gradient(125deg,#5b4bdb,#8b5cf6 55%,#ff80a5);color:white;border-radius:30px;padding:clamp(24px,5vw,52px);position:relative;overflow:hidden;box-shadow:0 18px 45px #5746bf26}
+.hero:after{content:"⭐";font-size:110px;position:absolute;right:6%;top:12%;opacity:.3;transform:rotate(15deg)}.eyebrow{font-weight:900;letter-spacing:.1em;text-transform:uppercase;font-size:.8rem;opacity:.9}
+h1{font-size:clamp(2rem,6vw,4rem);line-height:1.02;margin:12px 0}.hero p{max-width:650px;font-size:1.08rem;line-height:1.6}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.pill{border:1px solid #ffffff70;background:#ffffff20;border-radius:999px;padding:7px 12px;font-size:.88rem;font-weight:750}
+.panel{background:#fff;border:1px solid #e9e8f6;border-radius:24px;padding:clamp(18px,3vw,30px);margin-top:18px;box-shadow:0 8px 25px #23345b0b}
+h2{font-size:clamp(1.45rem,3vw,2.1rem);margin:0 0 12px}h3{margin:0 0 8px}.muted{color:#66728a;line-height:1.55}
+label{font-weight:800;display:block;margin:12px 0 6px}input[type=text]{width:100%;max-width:520px;border:2px solid #d9d7f4;border-radius:14px;padding:14px;font:inherit}
+button,.btn{font:inherit;font-weight:850;border:0;border-radius:14px;padding:12px 18px;cursor:pointer;transition:transform .15s,filter .15s;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+button:hover,.btn:hover{transform:translateY(-2px);filter:brightness(1.02)}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}
+.primary{background:var(--purple);color:white}.secondary{background:#eeeaff;color:#4c3bc2}.yellow{background:var(--yellow);color:#4d3a00}.mint{background:#c8f9e6;color:#075c43}.danger{background:#ffe1e7;color:#9b2343}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.hidden{display:none!important}
+.progress-wrap{height:12px;background:#e9eaf5;border-radius:99px;overflow:hidden;margin:10px 0 16px}.progress{height:100%;width:0;background:linear-gradient(90deg,#6ee7b7,#5b4bdb);transition:width .3s}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}.stat{background:#f5f3ff;border-radius:16px;padding:12px;text-align:center}.stat strong{font-size:1.3rem;display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.note{border-radius:20px;padding:18px;background:#f5f3ff;border:2px solid #e6e1ff}.note:nth-child(2){background:#e8f9ff;border-color:#c8efff}.note:nth-child(3){background:#fff4d8;border-color:#ffe8a3}.note:nth-child(4){background:#e5fff3;border-color:#c0f5dd}.emoji{font-size:2.3rem;display:block;margin-bottom:6px}
+.step-indicator{font-weight:900;color:var(--purple);font-size:.9rem}.big-emoji{font-size:4rem;text-align:center;margin:10px}.mission{background:#fff8dc;border:2px dashed #f3c64e;border-radius:18px;padding:16px}
+.choice-grid{display:grid;grid-template-columns:1fr;gap:10px;margin:16px 0}.choice{background:#f6f7fb;border:2px solid #e3e6f0;text-align:left;justify-content:flex-start;color:var(--ink);width:100%;min-height:52px}.choice.selected{border-color:var(--purple);background:#efedff}.choice.correct{border-color:#12a875;background:#d9ffef}.choice.wrong{border-color:#f06484;background:#ffe5eb}
+.feedback{padding:14px;border-radius:16px;margin-top:12px;line-height:1.5}.feedback.good{background:#ddfff0;color:#075c43}.feedback.bad{background:#fff0d8;color:#704600}
+footer{text-align:center;color:#66728a;font-size:.85rem;padding:20px}.tag{display:inline-block;border-radius:10px;background:#eeeaff;color:#4c3bc2;padding:5px 9px;font-weight:800;font-size:.82rem}
+.video-link{display:inline-block;color:#4c3bc2;font-weight:850;overflow-wrap:anywhere}
+.review-item{border-bottom:1px solid var(--line);padding:14px 0}.review-item:last-child{border-bottom:0}
+.badge-row{font-size:2.1rem;letter-spacing:.15rem}.toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#20304a;color:white;padding:12px 18px;border-radius:99px;box-shadow:0 8px 30px #0002;z-index:10}
+@media(min-width:700px){.choice-grid{grid-template-columns:1fr 1fr}.hero:after{font-size:150px}.layout-two{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;align-items:start}}
+@media print{header,.actions,.sound,.no-print{display:none!important}body{background:white}.panel,.hero{box-shadow:none;break-inside:avoid}.hero{background:white;color:#20304a;border:2px solid #ddd}.hidden{display:block!important}main{max-width:none}}
+</style>
+</head>
+<body>
+<header><div class="brand">🧭 PENGEMBARAAN ILMU</div><button class="sound" id="soundBtn" aria-pressed="true">🔊 Bunyi: Hidup</button></header>
+<main>
+<section id="home">
+ <div class="hero">
+  <div class="eyebrow">Pendidikan Jasmani • Tahun 2</div>
+  <h1>Mari Melompat!<br>🚀 Cabaran Pendaratan Hebat</h1>
+  <p>Jom jadi penjelajah pergerakan! Belajar cara melompat dan mendarat dengan selamat, kumpul bintang, dan lengkapkan 25 cabaran.</p>
+  <div class="pills"><span class="pill">📘 Unit 2: Mari Bersenam</span><span class="pill">🎯 Kemahiran lokomotor</span><span class="pill">⭐ 25 soalan</span></div>
+ </div>
+ <div class="panel layout-two">
+  <div><h2>Selamat datang, juara! 🦸</h2><p class="muted">Masukkan nama kamu untuk memulakan pengembaraan. Tiada nama? Minta bantuan guru.</p>
+   <label for="studentName">Nama murid</label><input id="studentName" type="text" maxlength="80" placeholder="Contoh: Nur Aisyah" autocomplete="name">
+   <div class="actions"><button class="primary" id="startBtn">Mula Pembelajaran ➜</button><button class="secondary" id="resumeBtn">Sambung kemajuan</button></div>
+  </div>
+  <div class="mission"><h3>🗺️ Kad Pengembaraan</h3><p><b>Guru:</b> MUHAMAD SYAWALWAHED</p><p><b>Sekolah:</b> SK (P) JALAN YAHYA AWAL</p><p><b>Tema:</b> Pergerakan Asas</p><p><b>Unit:</b> Unit 2 — Mari Bersenam</p><p><b>Tajuk kecil:</b> Mari Melompat</p><small>Selaras dengan DSKP KSSR Semakan 2017 dan rujukan RPT PJ Tahun 2 2026 yang ditemui. Sila semak dengan RPT sekolah jika susunan minggu berbeza.</small></div>
+ </div>
+</section>
+
+<section id="objectives" class="hidden">
+ <div class="panel"><span class="tag">MISI 1 DARIPADA 4</span><h2>Matlamat misi 🎯</h2><p class="muted">Pada akhir pembelajaran, kamu boleh:</p>
+ <div class="grid">
+  <div class="note"><span class="emoji">🦘</span><b>Melompat</b><p>Melompat pada satu jarak dengan kawalan badan.</p></div>
+  <div class="note"><span class="emoji">🦵</span><b>Mendarat dengan selamat</b><p>Mendarat menggunakan kedua-dua belah kaki dan membengkokkan lutut.</p></div>
+  <div class="note"><span class="emoji">🛡️</span><b>Terangkan sebab</b><p>Menjelaskan bahawa fleksi membantu mengurangkan hentakan dan risiko kecederaan.</p></div>
+ </div>
+ <div class="panel"><h3>Standard pembelajaran yang disasarkan</h3><p><b>SK 1.2:</b> Melakukan pelbagai pergerakan lokomotor.</p><p><b>SP 1.2.2:</b> Melompat pada satu jarak, mendarat dengan kedua-dua belah kaki dan lutut difleksi.</p><p><b>SK 2.2:</b> Mengaplikasikan konsep pergerakan semasa melakukan pergerakan lokomotor dan bukan lokomotor.</p><p><b>SP 2.2.2:</b> Menerangkan kepentingan fleksi dalam pergerakan lokomotor dan bukan lokomotor.</p><p><b>SK 5.2:</b> Menunjukkan keyakinan dan tanggungjawab kendiri semasa melakukan aktiviti fizikal.</p><p><b>SP 5.2.2:</b> Menerima cabaran dan seronok semasa melakukan aktiviti.</p><p class="muted">Kemahiran: koordinasi lompatan, pendaratan dua kaki, fleksi lutut, kawalan postur dan amalan keselamatan.</p></div>
+ <div class="actions"><button class="secondary" data-home>Kembali ke Menu Utama</button><button class="primary" id="toNotes">Teroka Nota ➜</button></div></div>
+</section>
+
+<section id="notes" class="hidden">
+ <div class="panel"><div class="step-indicator" id="noteStep">NOTA 1 / 4</div><div class="progress-wrap"><div class="progress" id="noteProgress"></div></div>
+ <div id="noteContent"></div>
+ <div class="actions"><button class="secondary" id="prevNote">← Sebelumnya</button><button class="primary" id="nextNote">Seterusnya ➜</button><button class="secondary" data-home>Kembali ke Menu Utama</button></div></div>
+</section>
+
+<section id="video" class="hidden">
+ <div class="panel"><span class="tag">MISI 2 DARIPADA 4</span><h2>🎬 Tonton dan perhatikan</h2><p>Semasa menonton, cari contoh lompatan dan perhatikan cara lutut dibengkokkan ketika mendarat. Pautan ini membuka hasil carian YouTube berkaitan, bukan satu video khusus yang telah disahkan.</p>
+ <p><a class="video-link" href="https://www.youtube.com/results?search_query=Pendidikan+Jasmani+Tahun+2+Mari+Melompat+fleksi+lutut" target="_blank" rel="noopener noreferrer">▶ Buka carian YouTube: Pendidikan Jasmani Tahun 2 — Mari Melompat</a></p>
+ <div class="note"><span class="emoji">👀</span><b>Semasa menonton, ingat 3 perkara:</b><ol><li>Ayun tangan untuk membantu lompatan.</li><li>Mendarat dengan kedua-dua kaki.</li><li>Bengkokkan lutut dan pastikan ruang selamat.</li></ol></div>
+ <div class="actions"><button class="secondary" data-home>Kembali ke Menu Utama</button><button class="primary" id="toGame">Main permainan ➜</button></div></div>
+</section>
+
+<section id="game" class="hidden">
+ <div class="panel"><span class="tag">MISI 3 DARIPADA 4</span><h2>🎮 Permainan: Jurulatih Pendaratan</h2><p class="muted">Pilih langkah yang betul untuk membantu watak Kiko mendarat dengan selamat.</p>
+ <div class="big-emoji" id="gameEmoji">🦘</div><h3 id="gamePrompt">Kiko bersedia untuk melompat. Apa yang perlu dibuat ketika mendarat?</h3>
+ <div class="choice-grid" id="gameChoices"></div><div id="gameFeedback" aria-live="polite"></div>
+ <div class="stats"><div class="stat"><strong id="gamePoints">0</strong>Mata latihan</div><div class="stat"><strong id="gameRound">1/3</strong>Cabaran</div><div class="stat"><strong id="gameStars">⭐ 0</strong>Bintang</div></div>
+ <div class="actions"><button class="secondary" data-home>Kembali ke Menu Utama</button><button class="primary hidden" id="gameNext">Cabaran seterusnya ➜</button><button class="yellow hidden" id="toQuiz">Mula Kuiz 25 Soalan ➜</button></div></div>
+</section>
+
+<section id="quiz" class="hidden">
+ <div class="panel"><span class="tag">MISI 4 DARIPADA 4</span><h2>🧠 Kuiz Bintang</h2>
+ <div class="stats"><div class="stat"><strong id="qCounter">1/25</strong>Soalan</div><div class="stat"><strong id="qScore">0</strong>Betul</div><div class="stat"><strong id="qStars">⭐ 0</strong>Bintang</div></div>
+ <div class="progress-wrap"><div class="progress" id="quizProgress"></div></div>
+ <div class="step-indicator" id="qTopic">CABARAN</div><h3 id="qText"></h3><div class="choice-grid" id="qChoices"></div><div id="qFeedback" aria-live="polite"></div>
+ <div class="actions"><button class="secondary" data-home>Kembali ke Menu Utama</button><button class="primary hidden" id="nextQuestion">Soalan seterusnya ➜</button><button class="yellow hidden" id="finishQuiz">Lihat keputusan 🏆</button></div></div>
+</section>
+
+<section id="results" class="hidden">
+ <div class="hero"><div class="eyebrow">MISI SELESAI</div><h1 id="congratsTitle">Tahniah, Juara! 🏆</h1><p>Kamu telah menamatkan cabaran Mari Melompat. Terus berlatih dengan selamat!</p><div class="badge-row" id="badgeRow">⭐ ⭐ ⭐</div></div>
+ <div class="panel"><h2>Laporan pencapaian 📜</h2><p id="reportName"></p>
+ <div class="stats"><div class="stat"><strong id="correctCount">0</strong>Jawapan betul</div><div class="stat"><strong id="wrongCount">0</strong>Jawapan salah</div><div class="stat"><strong id="scoreOut">0/25</strong>Markah</div></div>
+ <div class="note"><h3 id="badgeTitle">Lencana Penjelajah</h3><p id="percentOut"></p><p id="reportMessage"></p></div>
+ <div class="actions"><button class="primary" id="reviewBtn">Semak jawapan & penerangan</button><button class="secondary" id="retryBtn">Cuba semula</button><button class="yellow" id="printBtn">Cetak / Simpan PDF</button><button class="secondary" data-home>Kembali ke Menu Utama</button></div></div>
+</section>
+
+<section id="review" class="hidden">
+ <div class="panel"><h2>🔎 Semakan jawapan</h2><p class="muted">Gunakan penerangan untuk mengulang kaji. Kamu boleh kembali ke nota dan mencuba kuiz semula.</p><div id="reviewList"></div>
+ <div class="actions"><button class="secondary" id="reviewNotes">Ulang kaji nota</button><button class="primary" id="reviewRetry">Cuba semula kuiz</button><button class="secondary" data-home>Kembali ke Menu Utama</button></div></div>
+</section>
+</main>
+<footer>Direka untuk pembelajaran kendiri • Pastikan aktiviti melompat dilakukan di ruang lapang, rata dan selamat dengan pengawasan guru.</footer>
+<div id="toast" class="toast hidden" role="status"></div>
+<script>
+const $=id=>document.getElementById(id);
+const sections=['home','objectives','notes','video','game','quiz','results','review'];
+let student='',soundOn=true,noteIndex=0,qIndex=0,answers=[],gameIndex=0,gameScore=0,gameAnswered=false,lastSection='home';
+const notes=[
+ {emoji:'🦘',title:'1. Apa itu melompat?',body:'Melompat ialah pergerakan lokomotor — badan bergerak dari satu tempat ke tempat lain.',points:['Bengkokkan sedikit lutut sebelum menolak badan ke atas atau ke hadapan.','Ayunkan tangan untuk membantu pergerakan.','Lihat ruang di hadapan dan pastikan tiada halangan.'],example:'Contoh: melompat melepasi garisan kecil di lantai.'},
+ {emoji:'🦶',title:'2. Mendarat dengan dua kaki',body:'Selepas melompat, mendarat menggunakan kedua-dua belah kaki dengan seimbang.',points:['Kaki mendarat hampir serentak.','Pastikan badan terkawal dan pandangan ke hadapan.','Pilih permukaan yang rata dan tidak licin.'],example:'Bayangkan kaki seperti dua tapak yang menyentuh lantai bersama-sama.'},
+ {emoji:'🦵',title:'3. Apakah fleksi?',body:'Fleksi ialah membengkokkan sendi. Ketika mendarat, bengkokkan lutut dan buku lali dengan terkawal.',points:['Lutut tidak dikunci lurus.','Bengkokkan lutut untuk membantu menyerap hentakan.','Kekalkan keseimbangan; jangan menolak rakan.'],example:'Seperti spring yang termampat sedikit, lutut membantu mengurangkan hentakan.'},
+ {emoji:'🛡️',title:'4. Keselamatan dan sikap juara',body:'Lakukan aktiviti dengan yakin, tetapi jangan abaikan keselamatan.',points:['Pastikan kawasan lapang dan bebas daripada objek.','Pakai kasut/pakaian yang sesuai dan ikut arahan guru.','Terima cabaran dengan gembira; tidak mengusik rakan.'],example:'Jika lantai licin atau kamu sakit, berhenti dan beritahu guru.'}
+];
+const questions=[
+['Apakah jenis pergerakan melompat?',['Lokomotor','Bukan lokomotor','Rehat','Duduk diam'],0,'Melompat mengubah kedudukan badan dari satu tempat ke tempat lain, jadi ia pergerakan lokomotor.'],
+['Semasa mendarat, kita perlu menggunakan…',['Satu tangan','Kedua-dua belah kaki','Kepala','Satu lutut sahaja'],1,'SP 1.2.2 menyatakan pendaratan menggunakan kedua-dua belah kaki.'],
+['Apakah maksud fleksi?',['Meluruskan sendi sepenuhnya','Membengkokkan sendi','Berpusing laju','Berhenti bergerak'],1,'Fleksi bermaksud membengkokkan sendi, contohnya lutut.'],
+['Mengapa lutut difleksi ketika mendarat?',['Supaya lebih bising','Untuk mengurangkan hentakan','Supaya terus jatuh','Untuk melompat tanpa henti'],1,'Lutut yang dibengkokkan membantu menyerap hentakan dan mengurangkan risiko kecederaan.'],
+['Apakah yang perlu diperiksa sebelum melompat?',['Ruang lapang dan selamat','Telefon','Warna dinding','Bilangan tingkap'],0,'Pastikan ruang lapang, rata dan bebas daripada halangan.'],
+['Bagaimanakah kedudukan kaki ketika mendarat?',['Kedua-dua kaki mendarat bersama dengan terkawal','Kaki bersilang','Mendarat di atas tangan','Mendarat dengan kepala'],0,'Mendarat menggunakan kedua-dua kaki membantu kestabilan.'],
+['Apakah yang membantu menghasilkan lompatan?',['Mengayun tangan','Menutup mata','Memegang rakan','Melihat ke belakang sahaja'],0,'Ayunan tangan boleh membantu menghasilkan daya dan koordinasi lompatan.'],
+['Permukaan manakah paling sesuai untuk latihan?',['Lantai licin dan basah','Permukaan rata dan selamat','Kawasan berbatu tajam','Tangga sempit'],1,'Permukaan rata dan selamat mengurangkan risiko tergelincir atau tersadung.'],
+['Ketika mendarat, lutut sepatutnya…',['Dikunci lurus keras','Dibengkokkan secara terkawal','Dipeluk dengan tangan','Tidak digunakan'],1,'Lutut yang difleksi membantu menyerap hentakan.'],
+['Apakah yang perlu dilakukan jika kawasan latihan licin?',['Terus melompat','Berhenti dan maklumkan guru','Berlari lebih laju','Ajak rakan berlumba'],1,'Jangan teruskan aktiviti di kawasan licin; maklumkan guru dahulu.'],
+['Manakah contoh pergerakan lokomotor?',['Melompat ke hadapan','Membongkok di tempat','Mengimbang tanpa bergerak','Memusing badan di tempat'],0,'Melompat ke hadapan mengubah tempat badan.'],
+['Membengkokkan lutut ketika mendarat membantu…',['Menyerap hentakan','Membuat lantai licin','Menghilangkan kasut','Menghalang pernafasan'],0,'Fleksi membantu badan mengawal pendaratan dan menyerap sebahagian hentakan.'],
+['Sebelum melompat, pandangan sebaiknya…',['Ke arah ruang pendaratan','Sentiasa ke belakang','Ditutup','Ke lantai sepanjang masa tanpa melihat ruang'],0,'Lihat arah pergerakan dan pastikan tempat mendarat selamat.'],
+['Jika berasa sakit ketika aktiviti, murid perlu…',['Teruskan walaupun sakit','Beritahu guru dan berhenti','Sembunyikan daripada guru','Melompat lebih tinggi'],1,'Keselamatan diri penting. Berhenti dan beritahu guru jika sakit.'],
+['Apakah sikap yang baik semasa latihan?',['Mengejek rakan','Menerima cabaran dan berseronok','Menolak rakan','Tidak mengikut arahan'],1,'SP 5.2.2 menekankan menerima cabaran dan seronok semasa aktiviti.'],
+['Manakah cara mendarat yang kurang selamat?',['Kedua-dua kaki dan lutut dibengkokkan','Badan terkawal','Lutut dikunci lurus dengan hentakan kuat','Ruang lapang'],2,'Lutut terkunci lurus tidak membantu menyerap hentakan dengan baik.'],
+['Apakah tujuan mengekalkan keseimbangan selepas mendarat?',['Supaya tidak mudah terjatuh','Supaya melanggar rakan','Supaya melompat tanpa melihat','Supaya kasut tertanggal'],0,'Keseimbangan membantu murid kekal stabil selepas mendarat.'],
+['Apakah yang patut dipakai ketika aktiviti fizikal?',['Pakaian dan kasut yang sesuai','Selipar longgar di lantai licin','Barang kemas besar','Beg galas berat'],0,'Pakaian dan kasut yang sesuai membantu pergerakan lebih selamat.'],
+['Apabila guru memberi arahan keselamatan, kita perlu…',['Mengabaikannya','Mendengar dan mematuhinya','Berlari menjauh','Mengganggu rakan'],1,'Arahan guru membantu semua murid menjalankan aktiviti dengan selamat.'],
+['Apakah maksud mendarat dengan terkawal?',['Badan stabil dan tidak terhuyung-hayang','Terus jatuh ke lantai','Menolak orang lain','Mendarat sambil menutup mata'],0,'Pendaratan terkawal bermaksud badan stabil selepas kaki menyentuh lantai.'],
+['Melompat pada satu jarak bermaksud…',['Melompat dari tempat mula ke tempat sasaran','Berjalan di tempat','Duduk di atas kerusi','Menggerakkan jari sahaja'],0,'Murid melompat untuk mencapai jarak atau sasaran yang ditetapkan.'],
+['Apakah tindakan yang baik selepas rakan berjaya melompat?',['Memberi sokongan','Mengejek','Menolak rakan','Menghalang laluan'],0,'Sokongan dan sikap positif menjadikan aktiviti menyeronokkan untuk semua.'],
+['Fleksi ketika mendarat berlaku terutamanya pada…',['Lutut dan buku lali','Telinga','Jari tangan sahaja','Leher sahaja'],0,'Lutut dan buku lali membengkok secara terkawal untuk membantu menyerap hentakan.'],
+['Apakah urutan yang paling sesuai untuk lompatan selamat?',['Periksa ruang, melompat, mendarat dua kaki dengan lutut fleksi','Tutup mata, melompat, jatuh','Berlari ke arah rakan, melompat tanpa ruang','Mendarat dengan kepala dahulu'],0,'Periksa keselamatan dahulu, kemudian melompat dan mendarat dengan teknik yang betul.'],
+['Apakah yang paling penting apabila mencuba cabaran baharu?',['Keselamatan, usaha dan sikap positif','Menang dengan apa cara sekalipun','Buat aksi berbahaya','Tidak mendengar arahan'],0,'Berusaha dengan yakin, ikut arahan dan utamakan keselamatan.']
+];
+const gameQs=[
+ {emoji:'🦘',q:'Kiko baru sahaja melompat. Bagaimana cara mendarat?',opts:['Kedua-dua kaki, lutut dibengkokkan','Kaki lurus terkunci','Kepala dahulu'],a:0,why:'Bagus! Dua kaki dan lutut fleksi membantu pendaratan lebih terkawal.'},
+ {emoji:'🔎',q:'Kawasan latihan ada botol di atas lantai. Apa patut Kiko buat?',opts:['Abaikan botol','Alih/beritahu guru dan pastikan ruang selamat','Melompat lebih tinggi'],a:1,why:'Betul! Ruang perlu bebas daripada halangan sebelum aktiviti.'},
+ {emoji:'🦵',q:'Mengapa lutut dibengkokkan ketika mendarat?',opts:['Untuk menyerap hentakan','Untuk membuat bunyi','Supaya badan hilang keseimbangan'],a:0,why:'Tepat! Fleksi membantu menyerap hentakan dan menjaga keselamatan.'}
+];
+function show(id){sections.forEach(s=>$(s).classList.toggle('hidden',s!==id));if(id!=='home')lastSection=id;window.scrollTo({top:0,behavior:'smooth'});save();}
+function toast(t){$('toast').textContent=t;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),1800)}
+function speak(t){if(!soundOn)return;try{if('speechSynthesis'in window){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang='ms-MY';u.rate=.9;speechSynthesis.speak(u)}}catch(e){}}
+function tone(ok){if(!soundOn)return;try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;const c=new C(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=ok?660:220;g.gain.value=.07;o.start();o.stop(c.currentTime+.14);o.onended=()=>c.close()}catch(e){}}
+function feedback(ok,text){tone(ok);speak(ok?'Betul! Syabas!':'Belum tepat. Cuba lagi!');return `<div class="feedback ${ok?'good':'bad'}"><b>${ok?'⭐ Betul! Syabas!':'💡 Belum tepat.'}</b> ${text}</div>`}
+function save(){try{localStorage.setItem('pjMariMelompatProgress',JSON.stringify({student,noteIndex,qIndex,answers,gameIndex,gameScore,gameAnswered,section:lastSection}))}catch(e){}}
+function restore(){try{const d=JSON.parse(localStorage.getItem('pjMariMelompatProgress')||'null');if(!d)return false;student=d.student||'';noteIndex=d.noteIndex||0;qIndex=d.qIndex||0;answers=d.answers||[];gameIndex=d.gameIndex||0;gameScore=d.gameScore||0;gameAnswered=d.gameAnswered||false;lastSection=d.section||'objectives';$('studentName').value=student;return !!student}catch(e){return false}}
+$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊 Bunyi: Hidup':'🔇 Bunyi: Mati';$('soundBtn').setAttribute('aria-pressed',String(soundOn));if(!soundOn&&'speechSynthesis'in window)speechSynthesis.cancel()};
+$('startBtn').onclick=()=>{student=$('studentName').value.trim();if(!student){toast('Sila isi nama kamu dahulu 😊');$('studentName').focus();return}noteIndex=0;qIndex=0;answers=[];gameIndex=0;gameScore=0;gameAnswered=false;show('objectives')};
+$('resumeBtn').onclick=()=>{if(!restore()){toast('Belum ada kemajuan tersimpan. Masukkan nama dan mula dahulu.');return}if(lastSection==='notes')renderNote();if(lastSection==='game')renderGame();if(lastSection==='quiz')renderQuestion();if(lastSection==='review')renderReview();if(lastSection==='results')finishQuiz();else show(lastSection==='home'?'objectives':lastSection);toast('Kemajuan terdahulu dimuatkan.');};
+document.querySelectorAll('[data-home]').forEach(b=>b.onclick=()=>show('home'));
+$('toNotes').onclick=()=>{noteIndex=0;renderNote();show('notes')};
+function renderNote(){const n=notes[noteIndex];$('noteStep').textContent=`NOTA ${noteIndex+1} / ${notes.length}`;$('noteProgress').style.width=((noteIndex+1)/notes.length*100)+'%';$('noteContent').innerHTML=`<div class="big-emoji">${n.emoji}</div><h2>${n.title}</h2><p class="muted">${n.body}</p><div class="note"><h3>Ingat ini!</h3><ul>${n.points.map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="mission"><b>🌟 Contoh mudah:</b> ${n.example}</div>`;$('prevNote').disabled=noteIndex===0;$('nextNote').textContent=noteIndex===notes.length-1?'Teruskan ke video ➜':'Seterusnya ➜';save()}
+$('prevNote').onclick=()=>{if(noteIndex>0){noteIndex--;renderNote()}};
+$('nextNote').onclick=()=>{if(noteIndex<notes.length-1){noteIndex++;renderNote()}else show('video')};
+$('toGame').onclick=()=>{gameIndex=0;gameScore=0;gameAnswered=false;renderGame();show('game')};
+function renderGame(){const g=gameQs[gameIndex];$('gameEmoji').textContent=g.emoji;$('gamePrompt').textContent=g.q;$('gameRound').textContent=`${gameIndex+1}/3`;$('gamePoints').textContent=gameScore;$('gameStars').textContent='⭐ '+gameScore;$('gameFeedback').innerHTML='';$('gameNext').classList.add('hidden');$('toQuiz').classList.add('hidden');$('gameChoices').innerHTML='';g.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='choice';b.textContent=String.fromCharCode(65+i)+'. '+op;b.onclick=()=>{if(gameAnswered)return;gameAnswered=true;const ok=i===g.a;if(ok)gameScore++;b.classList.add(ok?'correct':'wrong');$('gameChoices').querySelectorAll('button').forEach((x,j)=>{if(j===g.a)x.classList.add('correct');x.disabled=true});$('gameFeedback').innerHTML=feedback(ok,g.why);$('gamePoints').textContent=gameScore;$('gameStars').textContent='⭐ '+gameScore;if(gameIndex<2)$('gameNext').classList.remove('hidden');else $('toQuiz').classList.remove('hidden');save()};$('gameChoices').appendChild(b)});save()}
+$('gameNext').onclick=()=>{gameIndex++;gameAnswered=false;renderGame()};
+$('toQuiz').onclick=()=>{qIndex=0;answers=[];renderQuestion();show('quiz')};
+function renderQuestion(){const q=questions[qIndex];$('qCounter').textContent=`${qIndex+1}/25`;$('qScore').textContent=answers.filter(a=>a&&a.ok).length;$('qStars').textContent='⭐ '+answers.filter(a=>a&&a.ok).length;$('quizProgress').style.width=((qIndex)/25*100)+'%';$('qTopic').textContent=`CABARAN ${qIndex+1} • ${qIndex<8?'TEKNIK LOMPATAN':qIndex<17?'FLEKSI & KESELAMATAN':'SIKAP JUARA'}`;$('qText').textContent=q[0];$('qChoices').innerHTML='';$('qFeedback').innerHTML='';$('nextQuestion').classList.add('hidden');$('finishQuiz').classList.add('hidden');q[1].forEach((op,i)=>{const b=document.createElement('button');b.className='choice';b.textContent=String.fromCharCode(65+i)+'. '+op;b.onclick=()=>{if(answers[qIndex])return;const ok=i===q[2];answers[qIndex]={choice:i,ok};b.classList.add(ok?'correct':'wrong');$('qChoices').querySelectorAll('button').forEach((x,j)=>{x.disabled=true;if(j===q[2])x.classList.add('correct')});$('qFeedback').innerHTML=feedback(ok,q[3]);$('qScore').textContent=answers.filter(a=>a&&a.ok).length;$('qStars').textContent='⭐ '+answers.filter(a=>a&&a.ok).length;$('quizProgress').style.width=((qIndex+1)/25*100)+'%';if(qIndex<24)$('nextQuestion').classList.remove('hidden');else $('finishQuiz').classList.remove('hidden');save()};$('qChoices').appendChild(b)});save()}
+$('nextQuestion').onclick=()=>{qIndex++;renderQuestion()};
+$('finishQuiz').onclick=()=>finishQuiz();
+function finishQuiz(){const correct=answers.filter(a=>a&&a.ok).length,wrong=25-correct,pct=Math.round(correct/25*100);$('congratsTitle').textContent=`Tahniah, ${student}! 🏆`;$('reportName').innerHTML=`<b>Nama murid:</b> ${escapeHtml(student)}<br><b>Tajuk:</b> Mari Melompat — Unit 2: Mari Bersenam`;$('correctCount').textContent=correct;$('wrongCount').textContent=wrong;$('scoreOut').textContent=correct+'/25';$('percentOut').textContent=`Pencapaian: ${pct}% • Bintang kuiz: ${correct} ⭐`;$('badgeTitle').textContent=pct>=80?'🏅 Lencana Juara Pendaratan':pct>=60?'🥈 Lencana Penjelajah Gigih':'🌱 Lencana Berani Mencuba';$('badgeRow').textContent=pct>=80?'🏆 ⭐ 🏅 ⭐ 🏆':pct>=60?'🥈 ⭐ 🌟':'🌱 ⭐ 💪';$('reportMessage').textContent=pct>=80?'Hebat! Kamu menguasai banyak perkara tentang lompatan dan pendaratan selamat.':pct>=60?'Bagus! Semak jawapan yang salah dan teruskan berlatih.':'Terima kasih kerana mencuba! Ulang kaji nota dan cuba lagi — setiap percubaan membantu kamu belajar.';show('results');save()}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('reviewBtn').onclick=()=>{renderReview();show('review')};
+function renderReview(){$('reviewList').innerHTML=questions.map((q,i)=>{const a=answers[i],chosen=a?q[1][a.choice]:'Tidak dijawab',right=q[1][q[2]];return `<div class="review-item"><b>${i+1}. ${q[0]}</b><p>Jawapan kamu: <span style="color:${a&&a.ok?'#087d58':'#b53b58'}">${escapeHtml(chosen)}</span></p><p>Jawapan betul: <b>${escapeHtml(right)}</b></p><p class="muted">${q[3]}</p></div>`}).join('')}
+$('retryBtn').onclick=()=>{qIndex=0;answers=[];renderQuestion();show('quiz')};$('reviewRetry').onclick=()=>{qIndex=0;answers=[];renderQuestion();show('quiz')};$('reviewNotes').onclick=()=>{noteIndex=0;renderNote();show('notes')};$('printBtn').onclick=()=>window.print();
+window.addEventListener('beforeunload',save);
+</script>
+</body></html>
